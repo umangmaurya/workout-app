@@ -54,10 +54,11 @@ export const CollapsibleSection: React.FC<CollapsibleSectionProps> = ({
                 href={item.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="ml-2 flex-shrink-0 bg-red-600 hover:bg-red-700 text-white px-2.5 py-1 rounded-lg text-xs font-semibold flex items-center gap-1 transition-colors"
+                className="ml-2 flex-shrink-0 p-1.5 rounded-lg text-gray-300 hover:text-white hover:bg-white/10 transition-colors"
               >
-                <span>▶️</span>
-                <span>Form</span>
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                </svg>
               </a>
             </div>
           ))}

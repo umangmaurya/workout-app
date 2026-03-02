@@ -1,13 +1,14 @@
 import { useState } from 'react';
 import { TabType } from './types';
-import { useTheme, useWorkout, useTime } from './hooks';
+import { useTheme, useWorkout, useTime, useProgram } from './hooks';
 import { 
   Header, 
   Sidebar, 
   BottomNav, 
   WorkoutCard, 
   ProgressTab, 
-  ProfileTab 
+  ProfileTab,
+  DaySelector
 } from './components';
 
 function App() {
@@ -16,9 +17,11 @@ function App() {
   
   const { isDarkMode, toggleTheme } = useTheme();
   const { formattedDate, formattedTime } = useTime();
+  const { program, selectProgram } = useProgram();
   const {
     currentIndex,
     currentWorkout,
+    filteredWorkouts,
     isStarter,
     warmupOpen,
     cooldownOpen,
@@ -27,7 +30,7 @@ function App() {
     setWorkoutIndex,
     toggleWarmup,
     toggleCooldown,
-  } = useWorkout();
+  } = useWorkout(program);
 
   return (
     <div className={`min-h-screen flex justify-center transition-colors duration-300 ${isDarkMode ? 'bg-gray-900 text-white' : 'bg-gray-100 text-gray-900'}`}>
@@ -35,8 +38,10 @@ function App() {
         
         <Sidebar 
           isOpen={sidebarOpen} 
-          isDarkMode={isDarkMode} 
-          onClose={() => setSidebarOpen(false)} 
+          isDarkMode={isDarkMode}
+          program={program}
+          onClose={() => setSidebarOpen(false)}
+          onProgramChange={selectProgram}
         />
 
         <Header
@@ -47,20 +52,33 @@ function App() {
           formattedTime={formattedTime}
         />
 
-        <main className="flex-1 overflow-hidden pb-20">
-          {activeTab === 'workout' && (
-            <WorkoutCard
-              workout={currentWorkout}
-              currentIndex={currentIndex}
-              isStarter={isStarter}
-              warmupOpen={warmupOpen}
-              cooldownOpen={cooldownOpen}
-              onToggleWarmup={toggleWarmup}
-              onToggleCooldown={toggleCooldown}
-              onPrev={handlePrev}
-              onNext={handleNext}
-              onIndexChange={setWorkoutIndex}
-            />
+        <main className="flex-1 overflow-hidden pb-20 flex flex-col">
+          {activeTab === 'workout' && currentWorkout && (
+            <>
+              <DaySelector
+                currentIndex={currentIndex}
+                totalDays={filteredWorkouts.length}
+                isDarkMode={isDarkMode}
+                isStarter={isStarter}
+                onDayChange={setWorkoutIndex}
+              />
+              <div className="flex-1 overflow-hidden">
+                <WorkoutCard
+                  workout={currentWorkout}
+                  workouts={filteredWorkouts}
+                  currentIndex={currentIndex}
+                  isStarter={isStarter}
+                  isDarkMode={isDarkMode}
+                  warmupOpen={warmupOpen}
+                  cooldownOpen={cooldownOpen}
+                  onToggleWarmup={toggleWarmup}
+                  onToggleCooldown={toggleCooldown}
+                  onPrev={handlePrev}
+                  onNext={handleNext}
+                  onIndexChange={setWorkoutIndex}
+                />
+              </div>
+            </>
           )}
 
           {activeTab === 'progress' && (

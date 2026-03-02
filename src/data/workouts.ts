@@ -183,18 +183,136 @@ export const workoutData: Workout[] = [
       { name: "HIIT Cardio", sets: "15min", url: "https://youtube.com/watch?v=ml6cT4AZdqI" },
     ]
   },
+  // 6-Day Program Workouts
+  {
+    id: 9,
+    title: "Monday: Legs + Glutes",
+    duration: "50-55 min",
+    theme: "sixday",
+    warmupType: "lower",
+    cooldownType: "lower",
+    exercises: [
+      { name: "Barbell Squats", sets: "4x10-12", url: "https://youtube.com/watch?v=ultWZbUMPL8" },
+      { name: "Leg Press", sets: "3x12-15", url: "https://youtube.com/watch?v=IZxyjW7MPJQ" },
+      { name: "Romanian Deadlift", sets: "3x10-12", url: "https://youtube.com/watch?v=7j-2w4-P14I" },
+      { name: "Walking Lunges", sets: "3x12 each", url: "https://youtube.com/watch?v=L8fvypPrzzs" },
+      { name: "Leg Curl", sets: "3x12-15", url: "https://youtube.com/watch?v=1Tq3QdYUuHs" },
+      { name: "Leg Extension", sets: "3x12-15", url: "https://youtube.com/watch?v=YyvSfVjQeL0" },
+      { name: "Calf Raises", sets: "4x15-20", url: "https://youtube.com/watch?v=-M4-G8p8fmc" },
+    ]
+  },
+  {
+    id: 10,
+    title: "Tuesday: Chest + Triceps",
+    duration: "45-50 min",
+    theme: "sixday",
+    warmupType: "upper",
+    cooldownType: "upper",
+    exercises: [
+      { name: "Flat Bench Press", sets: "4x10-12", url: "https://youtube.com/watch?v=rT7DgCr-3pg" },
+      { name: "Incline DB Press", sets: "3x10-12", url: "https://youtube.com/watch?v=8iPEnn-ltC8" },
+      { name: "Cable Fly", sets: "3x12-15", url: "https://youtube.com/watch?v=Iwe6AmxVf7o" },
+      { name: "Push-ups", sets: "2xFailure", url: "https://youtube.com/watch?v=IODxDxX7oi4" },
+      { name: "Tricep Pushdown", sets: "3x12-15", url: "https://youtube.com/watch?v=vB5OHsJ3EME" },
+      { name: "Overhead Extension", sets: "3x10-12", url: "https://youtube.com/watch?v=YbX7Wd8jQ-Q" },
+      { name: "Dips", sets: "2x10-12", url: "https://youtube.com/watch?v=2z8JmcrW-As" },
+    ]
+  },
+  {
+    id: 11,
+    title: "Wednesday: Back + Biceps",
+    duration: "45-50 min",
+    theme: "sixday",
+    warmupType: "upper",
+    cooldownType: "upper",
+    exercises: [
+      { name: "Lat Pulldown", sets: "4x10-12", url: "https://youtube.com/watch?v=CAwf7n6Luuc" },
+      { name: "Seated Cable Row", sets: "3x10-12", url: "https://youtube.com/watch?v=GZbfZ033f74" },
+      { name: "Bent Over Row", sets: "3x10-12", url: "https://youtube.com/watch?v=FWJR5Ve8bnQ" },
+      { name: "Single Arm DB Row", sets: "3x10 each", url: "https://youtube.com/watch?v=pYcpY20QaE8" },
+      { name: "Face Pulls", sets: "3x15", url: "https://youtube.com/watch?v=rep-qVOkqgk" },
+      { name: "Barbell Curl", sets: "3x10-12", url: "https://youtube.com/watch?v=kwG2ipFRgfo" },
+      { name: "Hammer Curls", sets: "3x12", url: "https://youtube.com/watch?v=zC3nLlEvin4" },
+    ]
+  },
+  {
+    id: 12,
+    title: "Thursday: Shoulders",
+    duration: "40-45 min",
+    theme: "sixday",
+    warmupType: "upper",
+    cooldownType: "upper",
+    exercises: [
+      { name: "Overhead Shoulder Press", sets: "4x10-12", url: "https://youtube.com/watch?v=qEwKCR5JCog" },
+      { name: "Lateral Raises", sets: "4x12-15", url: "https://youtube.com/watch?v=3VcKaXpzqRo" },
+      { name: "Front Raises", sets: "3x12", url: "https://youtube.com/watch?v=-t7fuZ0KhDA" },
+      { name: "Rear Delt Fly", sets: "3x12-15", url: "https://youtube.com/watch?v=EA7u4Q_8HQ0" },
+      { name: "Shrugs", sets: "3x15", url: "https://youtube.com/watch?v=cJRVVxmytaM" },
+      { name: "Face Pulls", sets: "3x15", url: "https://youtube.com/watch?v=rep-qVOkqgk" },
+      { name: "Arnold Press", sets: "3x10-12", url: "https://youtube.com/watch?v=6Z15_WdXmVw" },
+    ]
+  },
+  {
+    id: 13,
+    title: "Friday: Full Body + Cardio",
+    duration: "50-55 min",
+    theme: "sixday",
+    warmupType: "full",
+    cooldownType: "full",
+    exercises: [
+      { name: "Deadlift", sets: "4x8-10", url: "https://youtube.com/watch?v=op9kVnSso6Q" },
+      { name: "DB Bench Press", sets: "3x12", url: "https://youtube.com/watch?v=VmB1G1K7v94" },
+      { name: "Pull-ups", sets: "3x8-10", url: "https://youtube.com/watch?v=eGo4IYlbE5g" },
+      { name: "Goblet Squat", sets: "3x12", url: "https://youtube.com/watch?v=MeIiIdhvXT4" },
+      { name: "DB Shoulder Press", sets: "3x12", url: "https://youtube.com/watch?v=qEwKCR5JCog" },
+      { name: "Plank", sets: "2x45sec", url: "https://youtube.com/watch?v=ASdvN_XEl_c" },
+      { name: "HIIT Cardio", sets: "15min", url: "https://youtube.com/watch?v=ml6cT4AZdqI" },
+    ]
+  },
+  {
+    id: 14,
+    title: "Saturday: Arms + Abs",
+    duration: "45-50 min",
+    theme: "sixday",
+    warmupType: "upper",
+    cooldownType: "upper",
+    exercises: [
+      { name: "Barbell Curl", sets: "4x10-12", url: "https://youtube.com/watch?v=kwG2ipFRgfo" },
+      { name: "Hammer Curls", sets: "3x12", url: "https://youtube.com/watch?v=zC3nLlEvin4" },
+      { name: "Preacher Curl", sets: "3x10-12", url: "https://youtube.com/watch?v=fIWP-FRFNU0" },
+      { name: "Tricep Pushdown", sets: "4x12-15", url: "https://youtube.com/watch?v=vB5OHsJ3EME" },
+      { name: "Skull Crushers", sets: "3x10-12", url: "https://youtube.com/watch?v=d_KZxkY_0cM" },
+      { name: "Overhead Extension", sets: "3x12", url: "https://youtube.com/watch?v=YbX7Wd8jQ-Q" },
+      { name: "Hanging Leg Raise", sets: "3x15", url: "https://youtube.com/watch?v=hdng3Nm1x_E" },
+      { name: "Cable Crunch", sets: "3x15", url: "https://youtube.com/watch?v=AV5PmrIVTRY" },
+      { name: "Plank", sets: "3x45-60sec", url: "https://youtube.com/watch?v=ASdvN_XEl_c" },
+      { name: "Russian Twist", sets: "3x20", url: "https://youtube.com/watch?v=wkD8rjkodUI" },
+    ]
+  },
 ];
 
-export const getDayWorkoutIndex = (): number => {
+export const getDayWorkoutIndex = (program: 'main' | 'sixday'): number => {
   const day = new Date().getDay();
+  if (program === 'sixday') {
+    const dayMap: Record<number, number> = {
+      0: 0, // Sunday -> show Monday
+      1: 0, // Monday -> Legs
+      2: 1, // Tuesday -> Chest + Triceps
+      3: 2, // Wednesday -> Back + Biceps
+      4: 3, // Thursday -> Shoulders
+      5: 4, // Friday -> Full Body
+      6: 5, // Saturday -> Arms + Abs
+    };
+    return dayMap[day];
+  }
   const dayMap: Record<number, number> = {
-    0: 3, // Sunday -> show Monday
-    1: 3, // Monday -> Legs
-    2: 4, // Tuesday -> Chest + Triceps
-    3: 5, // Wednesday -> Back + Biceps
-    4: 6, // Thursday -> Shoulders + Abs
-    5: 7, // Friday -> Full Body
-    6: 3, // Saturday -> show Monday
+    0: 0, // Sunday -> show Monday
+    1: 0, // Monday -> Legs
+    2: 1, // Tuesday -> Chest + Triceps
+    3: 2, // Wednesday -> Back + Biceps
+    4: 3, // Thursday -> Shoulders + Abs
+    5: 4, // Friday -> Full Body
+    6: 0, // Saturday -> show Monday
   };
   return dayMap[day];
 };

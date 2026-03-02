@@ -8,7 +8,7 @@ export interface Workout {
   id: number;
   title: string;
   duration: string;
-  theme: 'starter' | 'main';
+  theme: 'starter' | 'main' | 'sixday';
   warmupType: 'upper' | 'lower' | 'full';
   cooldownType: 'upper' | 'lower' | 'full';
   exercises: Exercise[];
@@ -21,3 +21,5 @@ export interface WarmupCooldown {
 }
 
 export type TabType = 'workout' | 'progress' | 'profile';
+
+export type ProgramType = 'starter' | 'main' | 'sixday';

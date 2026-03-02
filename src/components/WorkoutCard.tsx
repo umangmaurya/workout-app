@@ -1,12 +1,14 @@
 import React, { useRef } from 'react';
 import { Workout } from '../types';
-import { warmups, cooldowns, workoutData } from '../data/workouts';
+import { warmups, cooldowns } from '../data/workouts';
 import { CollapsibleSection } from './CollapsibleSection';
 
 interface WorkoutCardProps {
   workout: Workout;
+  workouts: Workout[];
   currentIndex: number;
   isStarter: boolean;
+  isDarkMode: boolean;
   warmupOpen: boolean;
   cooldownOpen: boolean;
   onToggleWarmup: () => void;
@@ -18,8 +20,10 @@ interface WorkoutCardProps {
 
 export const WorkoutCard: React.FC<WorkoutCardProps> = ({
   workout,
+  workouts,
   currentIndex,
   isStarter,
+  isDarkMode,
   warmupOpen,
   cooldownOpen,
   onToggleWarmup,
@@ -58,10 +62,14 @@ export const WorkoutCard: React.FC<WorkoutCardProps> = ({
       onTouchEnd={handleTouchEnd}
     >
       <div
-        className={`h-full rounded-2xl p-4 flex flex-col ${
-          isStarter
-            ? "bg-gradient-to-br from-emerald-600/80 to-emerald-900/90"
-            : "bg-gradient-to-br from-violet-600/80 to-violet-900/90"
+        className={`h-full rounded-2xl p-4 flex flex-col border-2 ${
+          isDarkMode
+            ? isStarter
+              ? "bg-emerald-900/90 border-emerald-700 text-white"
+              : "bg-violet-900/90 border-violet-700 text-white"
+            : isStarter
+              ? "bg-white border-emerald-200 text-gray-900"
+              : "bg-white border-violet-300 text-gray-900"
         }`}
       >
         {/* Card Header */}
@@ -69,16 +77,18 @@ export const WorkoutCard: React.FC<WorkoutCardProps> = ({
           <div>
             <h2 className="text-lg font-bold">{workout.title}</h2>
             <div className="flex items-center gap-2 mt-1">
-              <svg className="w-4 h-4 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className={`w-4 h-4 ${isDarkMode ? 'text-gray-300' : 'text-gray-500'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
-              <span className="text-gray-300 text-sm">{workout.duration}</span>
+              <span className={`text-sm ${isDarkMode ? 'text-gray-300' : 'text-gray-500'}`}>{workout.duration}</span>
             </div>
           </div>
           <span className={`px-3 py-1 rounded-full text-xs font-semibold ${
-            isStarter ? "bg-emerald-500/30 text-emerald-200" : "bg-violet-500/30 text-violet-200"
+            isDarkMode
+              ? isStarter ? "bg-emerald-500/30 text-emerald-200" : "bg-violet-500/30 text-violet-200"
+              : isStarter ? "bg-emerald-100 text-emerald-700" : "bg-violet-100 text-violet-700"
           }`}>
-            {currentIndex + 1} / {workoutData.length}
+            {currentIndex + 1} / {workouts.length}
           </span>
         </div>
 
@@ -97,20 +107,27 @@ export const WorkoutCard: React.FC<WorkoutCardProps> = ({
           {workout.exercises.map((exercise, idx) => (
             <div
               key={idx}
-              className="bg-white/10 backdrop-blur rounded-lg p-3 flex items-center justify-between"
+              className={`rounded-lg p-3 flex items-center justify-between ${isDarkMode ? 'bg-white/10 backdrop-blur' : isStarter ? 'bg-white shadow-md border border-emerald-200' : 'bg-white shadow-md border border-violet-300'}`}
             >
               <div className="flex-1 min-w-0">
                 <p className="font-medium truncate">{exercise.name}</p>
-                <p className="text-sm text-gray-300">{exercise.sets}</p>
+                <p className={`text-sm ${isDarkMode ? 'text-gray-300' : 'text-gray-500'}`}>{exercise.sets}</p>
               </div>
               <a
                 href={exercise.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="ml-2 flex-shrink-0 bg-red-600 hover:bg-red-700 text-white px-3 py-1.5 rounded-lg text-xs font-semibold flex items-center gap-1 transition-colors"
+                className={`ml-2 flex-shrink-0 p-2 rounded-lg transition-colors ${
+                  isDarkMode 
+                    ? 'text-gray-300 hover:text-white hover:bg-white/10' 
+                    : isStarter 
+                      ? 'text-emerald-500 hover:text-emerald-700 hover:bg-emerald-50' 
+                      : 'text-violet-500 hover:text-violet-700 hover:bg-violet-50'
+                }`}
               >
-                <span>▶️</span>
-                <span>Form</span>
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                </svg>
               </a>
             </div>
           ))}
@@ -127,10 +144,10 @@ export const WorkoutCard: React.FC<WorkoutCardProps> = ({
         </div>
 
         {/* Carousel Navigation */}
-        <div className="flex items-center justify-between mt-4 pt-3 border-t border-white/10">
+        <div className={`flex items-center justify-between mt-4 pt-3 border-t ${isDarkMode ? 'border-white/10' : 'border-gray-200'}`}>
           <button
             onClick={onPrev}
-            className="bg-white/10 hover:bg-white/20 p-2 rounded-full transition-colors"
+            className={`p-2 rounded-full transition-colors ${isDarkMode ? 'bg-white/10 hover:bg-white/20' : 'bg-gray-100 hover:bg-gray-200'}`}
           >
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
@@ -138,16 +155,18 @@ export const WorkoutCard: React.FC<WorkoutCardProps> = ({
           </button>
 
           <div className="flex gap-1.5">
-            {workoutData.map((_, idx) => (
+            {workouts.map((_, idx: number) => (
               <button
                 key={idx}
                 onClick={() => onIndexChange(idx)}
                 className={`h-2 rounded-full transition-all ${
                   idx === currentIndex
                     ? isStarter
-                      ? "bg-emerald-400 w-5"
-                      : "bg-violet-400 w-5"
-                    : "bg-white/30 hover:bg-white/50 w-2"
+                      ? "bg-emerald-500 w-5"
+                      : "bg-violet-500 w-5"
+                    : isDarkMode 
+                      ? "bg-white/30 hover:bg-white/50 w-2"
+                      : "bg-gray-300 hover:bg-gray-400 w-2"
                 }`}
               />
             ))}
@@ -155,7 +174,7 @@ export const WorkoutCard: React.FC<WorkoutCardProps> = ({
 
           <button
             onClick={onNext}
-            className="bg-white/10 hover:bg-white/20 p-2 rounded-full transition-colors"
+            className={`p-2 rounded-full transition-colors ${isDarkMode ? 'bg-white/10 hover:bg-white/20' : 'bg-gray-100 hover:bg-gray-200'}`}
           >
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
